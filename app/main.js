@@ -10,7 +10,7 @@ var A7_to_B1_first = 6 * 60 + 11;
 var B1_to_A7_first = 6 * 60 + 0;
 
 var distance_relative_to_A1 = [ 0, 3, 8, 10, 13, 17, 20, 24, 26, 28, 31, 37, 39 ];
-var distance_relative_to_A13 = [0, 2, 8, 11, 13, 15, 19, 22, 26, 29, 31, 36, 39];
+var distance_relative_to_A13 = [39, 36, 31, 29, 26, 22, 19, 15, 13, 11, 8, 2, 0];
 var distance_relative_from_A7_A13 = [0, 4, 6, 8, 11, 17, 19];
 var distance_relative_from_A7_A1 = [0, 3, 7, 10, 12, 17, 20];
 
