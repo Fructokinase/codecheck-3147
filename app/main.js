@@ -19,6 +19,8 @@ var distance_relative_from_B5 = [15, 11, 8, 5, 3, 0];
 
 var last = 23 * 60;
 
+// var A = [0,3,5,2,3,4,3,4,2,2,3,6,2];
+// var B = [4,3,3,2,3];
 
 function main(args, options) {
     var line = args[0];
@@ -29,6 +31,18 @@ function main(args, options) {
     train_times(direction, line, station, hour);
 
 }
+
+// function distance_from_start (line, direction, station_number, ) {
+//     if(line == "A") {
+//         if(direction == "U") {
+//             return A.slice(0, station_num - 1).reduce(function (a,b) { return a + b});
+//         }
+//     } else {
+//         if(direction == "U") {
+//             return B.slice(0, station_num - 1).reduce(function (a,b) { return a + b});
+//         }
+//     }
+// }
 
 function train_times(direction, line, station, hour) {
     var distance;
@@ -48,20 +62,20 @@ function train_times(direction, line, station, hour) {
         print_time(A13_first, 5, distance, hour);
     } else if (line == "B" && direction == "U") {
         if (station_num == 7){
-            station_num = 5;
+            station_num = 6;
         }
         distance = distance_relative_from_B1[station_num -1];
         print_time(B1_to_A7_first, 6, distance, hour);
     } else if (line == "B" && direction == "D") {
         if (station_num == 7){
-            station_num = 5;
+            station_num = 6;
         }
         distance = distance_relative_from_B5[station_num -1];
         print_time(A7_to_B1_first, 6, distance, hour);
     }
 }
 
-function print_time_hour(first_station_time, frequency, distance, hour, station){
+function print_time_hour(first_station_time, frequency, distance, hour, station, direction){
     var result = (hour > 9 ? hour : ("0" + hour)) + ":";
     var min;
     var train_counter = 0;
@@ -71,7 +85,7 @@ function print_time_hour(first_station_time, frequency, distance, hour, station)
     }
 
     while((first_station_time + distance) < (hour+1)*60 && 
-           first_station_time < 23*60){
+           (direction == 'D' || first_station_time < 23*60)) {
 
         min = (first_station_time+distance)%60;
         result+= " " + (min > 9 ? min : ("0"+min));
@@ -86,17 +100,17 @@ function print_time_hour(first_station_time, frequency, distance, hour, station)
     console.log(result);
 }
 
-function print_time_all_hour(first_station_time, frequency, distance, station) {
+function print_time_all_hour(first_station_time, frequency, distance, direction) {
     for(var hour = 5; hour < 24; hour++){
-        print_time_hour(first_station_time, frequency, distance, hour, station);
+        print_time_hour(first_station_time, frequency, distance, hour, direction);
     }
 }
 
-function print_time(first_station_time, frequency, distance, hour) {
+function print_time(first_station_time, frequency, distance, hour, direction) {
     if(hour != -1) {
-        print_time_hour(first_station_time, frequency, distance, hour);
+        print_time_hour(first_station_time, frequency, distance, hour, direction);
     } else {
-        print_time_all_hour(first_station_time, frequency, distance);
+        print_time_all_hour(first_station_time, frequency, distance, direction);
     }
 }
 
