@@ -238,7 +238,7 @@ var print_hour = function(station, direction, hour){
     for(var t of times) {
         result += " " + t.slice(3);
     }
-    console.log(result);
+    console.log(times.length == 0 ? "No train" : result);
 }
 
 var print = function(station, direction, hour) {
