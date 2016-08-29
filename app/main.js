@@ -157,7 +157,7 @@ var add_train_line_B_UP  = function (start_time){
 
 var add_train_line_B_DOWN = function (start_time){
     for(var station in B_line_stations) {
-        time_table[station].D.push(add_minutes(start_time, B_DOWN_DISTANCE[4 - B_line_stations[station]]));
+        time_table[station].D.push(add_minutes(start_time, B_DOWN_DISTANCE[4 - B_line_stations[station]] + 2 ));
     }
 }
 // END B //
