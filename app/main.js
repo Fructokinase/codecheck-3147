@@ -181,7 +181,7 @@ while (compare_time(time, "<", "23:00")) {
 
 //
 var time = A7_to_A1_first;
-while (compare_time(time, "<=", "23:16")) {
+while (compare_time(time, "<=", "23:17")) {
     add_train_line_A7_to_A1(time);
     time = add_minutes(time, 10);
 }
