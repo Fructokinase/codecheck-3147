@@ -255,6 +255,9 @@ function main(args, options) {
     var direction = args[2];
     var hour = args[3] || -1;
 
+    if(line == "B" && station == 'A7') {
+        station = 'B5';
+    }
     print(station, direction, hour);
 
 }
